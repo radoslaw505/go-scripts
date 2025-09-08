@@ -85,21 +85,43 @@ func main() {
 
 	fmt.Println(person) // Output: Radosław is 31 years old.
 
+	// Struct Tags
+	type Product struct {
+		ID    int    `json:"id"`
+		Name  string `json:"name"`
+		Price int    `json:"price"`
+	}
+
+	prod := Product{ID: 1, Name: "Laptop", Price: 1000}
+
+	println("Product ID:", prod.ID) // Output: Product ID: 1
+
 	// Embedded Structs
-	type Animal struct {
-		Name string
+	type Contact struct {
+		Email string
+		Phone string
 	}
 
-	type Dog struct {
-		Animal // Embedding Animal struct
-		Breed  string
+	type User struct {
+		Name    string
+		Age     int
+		Contact // Embedded struct
 	}
 
-	d := Dog{
-		Animal: Animal{Name: "Buddy"},
-		Breed:  "Golden Retriever",
+	u := User{
+		Name: "Radosław",
+		Age:  30,
+		Contact: Contact{
+			Email: "radoslaw@example.com",
+			Phone: "123-456-7890",
+		},
 	}
 
-	println("Dog Name:", d.Name)   // Output: Dog Name: Buddy
-	println("Dog Breed:", d.Breed) // Output: Dog Breed: Golden Retriever
+	println("User Name:", u.Name)           // Output: User Name: Radosław
+	println("User Age:", u.Age)             // Output: User Age: 30
+	println("User Email:", u.Contact.Email) // Output: User Email: radoslaw@example.com
+	println("User Phone:", u.Contact.Phone) // Output: User Phone: 123-456-7890
+
+	// Accessing embedded struct fields directly
+	println("User Email (direct):", u.Email) // Output: User Email (direct):
 }
