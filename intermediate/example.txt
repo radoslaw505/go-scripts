@@ -1,0 +1,9 @@
+Welcome to the world of Go programming!
+This file contains multiple lines of text.
+Each line is here to demonstrate buffered reading.
+You can use bufio.Reader to read line by line.
+Or use bufio.Scanner for simpler input scanning.
+Remember to always check for errors.
+Buffered writing is efficient and fast.
+Flush your writer to ensure data is saved.
+Happy coding, Radosław!

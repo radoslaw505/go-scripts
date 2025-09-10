@@ -1,0 +1,2 @@
+Hello, Radosław!
+This file is embedded using go:embed.

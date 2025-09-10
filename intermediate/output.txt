@@ -1,0 +1,2 @@
+Hello, Radosław!
+This is written using bufio.Writer.
