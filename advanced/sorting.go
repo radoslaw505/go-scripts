@@ -25,7 +25,7 @@ func main() {
 	people := []Person{
 		{"John", 28},
 		{"Alice", 23},
-		{"Bob", 25},
+		{"Bob", 21},
 	}
 	sort.Slice(people, func(i, j int) bool {
 		return people[i].Age < people[j].Age

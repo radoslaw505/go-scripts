@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+
+	// Atomic counter
 	var counter int64
 	var wg sync.WaitGroup
 
@@ -20,5 +22,20 @@ func main() {
 	}
 
 	wg.Wait()
-	fmt.Println("Final counter value:", atomic.LoadInt64(&counter)) // Safe read
+	fmt.Println("Final atomic counter value:", atomic.LoadInt64(&counter)) // Safe read
+
+	// Normal to compare
+	var t_wg sync.WaitGroup
+	t_value := 0
+
+	for i := 0; i < 1000; i++ {
+		t_wg.Add(1)
+		go func() {
+			defer t_wg.Done()
+			t_value++ // Unsafe increment
+		}()
+	}
+
+	t_wg.Wait()
+	fmt.Println("Final normal counter value:", t_value) // Unsafe read
 }
